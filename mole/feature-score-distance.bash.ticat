@@ -1,0 +1,20 @@
+help = calculate feature score distance
+abbr = score-dis
+
+[arg]
+base|b = ''
+target|t = ''
+output|o = ''
+
+[arg2env]
+mole.base = base
+mole.target = target
+mole.output = output
+
+[env]
+mole.base = read
+mole.target = read
+mole.output = read
+conda.bin = read
+
+[dep]

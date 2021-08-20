@@ -1,0 +1,19 @@
+help = reshape metrics json file to csv file
+abbr = reshape
+
+[arg]
+input|i = ''
+output|o = ''
+rules|r = ''
+
+[arg2env]
+mole.input = input
+mole.output = output
+mole.rules = rules
+
+[env]
+mole.input = read
+mole.output = read
+mole.rules = may-read
+
+[dep]

@@ -1,0 +1,20 @@
+help = calculate feature score
+abbr = score
+
+[arg]
+input|i = ''
+output|o = ''
+feature_function|ff = ''
+
+[arg2env]
+mole.input = input
+mole.output = output
+mole.feature_function = feature_function
+
+[env]
+mole.input = read
+mole.output = read
+mole.feature_function = may-read
+conda.bin = read
+
+[dep]

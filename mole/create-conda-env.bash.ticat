@@ -1,0 +1,12 @@
+help = create conda environment
+abbr = env.conda
+
+[arg]
+
+[arg2env]
+
+[env]
+conda.bin = read
+
+[dep]
+

@@ -6,13 +6,16 @@ heatmap-dir-of-cluster-1|cluster1|c1 = ''
 heatmap-dir-of-cluster-2|cluster2|c2 = ''
 result-file-path|path = ''
 conda-dir|dir = "${HOME}/miniconda"
+conda-env-dir|env-dir = ${HOME}/workload_sim_env"
 
 [arg2env]
 conda.dir = conda-dir
+conda.env-dir = conda-env-dir
 
 [env]
 conda.dir = read
 mole.heatmap.distance.report-file-path|report = write
+conda.env-dir = read
 
 [dep]
 wget = to download conda

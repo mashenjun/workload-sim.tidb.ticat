@@ -1,0 +1,19 @@
+help = unpack workload sim env from perbuild tar.gz
+abbr = unpack
+
+[arg]
+download-url|url = "https://github.com/mashenjun/mole/releases/download/v0.0.1-alpha/workload-sim-env.linux-amd64.tar.gz"
+conda-env-dir|env-dir = ${HOME}/workload_sim_env"
+
+[arg2env]
+conda.unpack.download-url = download-url
+conda.env-dir = conda-env-dir
+
+[env]
+conda.unpack.download-url = read
+conda.env-dir = read
+conda.python = write
+
+[dep]
+wget = to download perbuild tar.gz
+tar = to untar perbuild tar.gz

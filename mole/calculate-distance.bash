@@ -30,6 +30,7 @@ fi
 
 mole_dir="${here}/../repos/mole"
 conda_bin=`get_conda "${env}"`
+conda_env_python=`get_conda_env_python "${env}"`
 
 f1s=`find "${dir1}" -name scores.csv`
 f2s=`find "${dir2}" -name scores.csv`
@@ -39,9 +40,7 @@ echo "${f1s}" | while read f1; do
 		echo "--- distance (data + performance) ---"
 		echo "feature set: ${f1}"
 		echo "feature set: ${f2}"
-		"${conda_bin}" run \
-			-n workload-sim \
-			python3 "${mole_dir}/data-analysis/prom_metrics_feature_score_distance.py" \
+		"${conda_env_python}" "${mole_dir}/data-analysis/prom_metrics_feature_score_distance.py" \
 			-b "${f1}" -t "${f2}" | tee "${output_path}"
 	done
 done

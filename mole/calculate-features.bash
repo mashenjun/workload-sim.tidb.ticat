@@ -17,7 +17,8 @@ scores_path="${cal_dir}/scores.csv"
 
 mole_dir="${here}/../repos/mole"
 mole_bin=`build_mole "${mole_dir}"`
-conda_bin=`get_conda "${env}"`
+# conda_bin=`get_conda "${env}"`
+conda_env_python=`get_conda_env_python "${env}"`
 
 ###
 
@@ -35,8 +36,7 @@ feature_function="${mole_dir}/data-analysis/example/feature_function.yaml"
 
 echo
 echo "[:-] calculate features begin"
-"${conda_bin}" run -n workload-sim \
-	python3 "${mole_dir}/data-analysis/prom_metrics_feature_score.py" \
+"${conda_env_python}" "${mole_dir}/data-analysis/prom_metrics_feature_score.py" \
 	-f "${feature_function}" \
 	-i "${reshaped_dir}" \
 	-o "${scores_path}"

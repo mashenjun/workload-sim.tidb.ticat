@@ -90,6 +90,15 @@ function get_conda()
 	echo "${conda_dir}/bin/conda"
 }
 
+function get_conda_env_python()
+{
+	local env="${1}"
+	local conda_env_dir=`must_env_val "${env}" 'conda.env-dir'`
+	# TODO: test all platforms
+	local conda_env_dir=`eval echo "${conda_env_dir}"`
+	echo "${conda_env_dir}/bin/pyhon3"
+}
+
 function get_metrics_yaml()
 {
 	local env="${1}"

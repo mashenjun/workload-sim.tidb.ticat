@@ -31,6 +31,7 @@ fi
 mole_dir="${here}/../repos/mole"
 mole_bin=`build_mole "${mole_dir}"`
 conda_bin=`get_conda "${env}"`
+conda_env_python=`get_conda_env_python "${env}"`
 
 f1s=`find "${dir1}" -name heatmap`
 if [ -z "${f1s}" ]; then
@@ -52,9 +53,7 @@ echo "${f1s}" | while read f1; do
 		echo "heatmap: ${f1}/csv"
 		echo "heatmap: ${f2}/csv"
 		echo "${conda_bin}" run -n workload-sim python3 "${mole_dir}/data-analysis/heatmap_feature_distance.py" -b "${f1}/csv" -t "${f2}/csv" -o "${output_path}"
-		"${conda_bin}" run \
-			-n workload-sim \
-			python3 "${mole_dir}/data-analysis/heatmap_feature_distance.py" \
+		"${conda_env_python}" "${mole_dir}/data-analysis/heatmap_feature_distance.py" \
 			-b "${f1}/csv" -t "${f2}/csv" -o "${output_path}"
 		cat "${output_path}"
 	done

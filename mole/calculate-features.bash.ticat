@@ -7,16 +7,19 @@ flow = bench.gen-tags
 [arg]
 mole-work-dir|mole-dir|mole = ''
 conda-dir|conda = "${HOME}/miniconda"
+conda-env-dir|env-dir = ${HOME}/workload_sim_env"
 
 [arg2env]
 mole.dir = mole-work-dir
 conda.dir = conda-dir
+conda.env-dir = conda-env-dir
 
 [env]
 mole.dir = read
 conda.dir = read
 bench.tag = read
 tidb.data.tag = read
+conda.env-dir = read
 
 [dep]
 go = to build mole binary

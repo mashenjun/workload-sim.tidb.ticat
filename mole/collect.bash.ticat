@@ -2,7 +2,7 @@ help = download keyviz and metrics data from tidb cluster
 abbr = coll|download|dl
 trivial = 3
 
-flow = bench.gen-tags
+flow = bench.gen-tags add-key=[[extra-tags]]
 
 [arg]
 download-dir|dir = ''
@@ -11,9 +11,12 @@ pd-pwd = ''
 pd-user = root
 begin = ''
 end = ''
+metrics-cfg = 'metrics.yaml'
+extra-tags= ''
 
 [arg2env]
 mole.dir = download-dir
+mole.metrics-cfg = metrics-cfg
 tidb.cluster = cluster-name
 tidb.pd.user = pd-user
 tidb.pd.pwd = pd-pwd
@@ -22,6 +25,7 @@ bench.run.end = end
 
 [env]
 mole.dir = read
+mole.metrics-cfg = read
 tidb.cluster = read
 tidb.pd.user = read
 tidb.pd.pwd = may-read

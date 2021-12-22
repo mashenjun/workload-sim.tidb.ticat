@@ -1,0 +1,13 @@
+help = test mole with loadgen, fix-update-key payload
+
+[arg]
+dir = /tmp/test-mole
+yaml = test
+metrics-cfg = 'metrics.yaml'
+reshape-cfg = 'reshape_rules.yaml'
+
+[arg2env]
+tidb.tiup.yaml = yaml
+
+[flow/]
+loadgen.conf.fuk t=4 dur=7200 : selftest.mole.csw dir=[[dir]]/loadgen metrics-cfg=[[metrics-cfg]] reshape-cfg=[[reshape-cfg]]

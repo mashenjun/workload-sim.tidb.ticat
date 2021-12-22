@@ -1,0 +1,15 @@
+help = test mole with loadgen, rand-batch-point-get payload
+
+[arg]
+dir = /tmp/test-mole
+yaml = test
+metrics-cfg = 'metrics.yaml'
+reshape-cfg = 'reshape_rules.yaml'
+
+[arg2env]
+tidb.tiup.yaml = yaml
+mole.metrics-cfg = metrics-cfg
+mole.reshape-cfg = reshape-cfg
+
+[flow/]
+loadgen.conf.rbpg t=4 dur=7200 : selftest.mole.csw dir=[[dir]]/loadgen metrics-cfg=[[metrics-cfg]] reshape-cfg=[[reshape-cfg]]

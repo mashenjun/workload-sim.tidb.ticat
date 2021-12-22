@@ -1,0 +1,23 @@
+help = reshape metrics data
+abbr = reshape
+trivial = 3
+
+flow = bench.gen-tags add-key=[[extra-tags]]
+
+[arg]
+download-dir|dir = ''
+reshape-cfg = 'reshape_rules.yaml'
+extra-tags= ''
+
+[arg2env]
+mole.dir = download-dir
+mole.reshape-cfg = reshape-cfg
+
+[env]
+mole.dir = read
+mole.reshape-cfg = read
+bench.tag = read
+tidb.data.tag = read
+
+[dep]
+go = to build mole binary

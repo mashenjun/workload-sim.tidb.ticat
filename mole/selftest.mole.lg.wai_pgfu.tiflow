@@ -1,0 +1,21 @@
+help = test mole with loadgen, write-auto-inc and rand-batch-point-get payload
+
+[arg]
+dir = /tmp/test-mole
+yaml = test
+metrics-cfg = 'metrics.yaml'
+reshape-cfg = 'reshape_rules.yaml'
+
+[arg2env]
+tidb.tiup.yaml = yaml
+mole.metrics-cfg = metrics-cfg
+mole.reshape-cfg = reshape-cfg
+
+[env]
+bench.workload = read
+
+[flow/]
+db.conf.test cluster=test-mole version=v5.3.0 : mole.precheck : db.rm : db.new
+loadgen.conf.wai t=4 dur=3600 : loadgen.load : loadgen.run :
+loadgen.conf.rbpg t=4 dur=3600 : loadgen.load : loadgen.run :
+mole.collect extra-tags='_with_wai' : mole.reshape extra-tags='_with_wai' : env.reset

@@ -1,0 +1,23 @@
+help = mole test
+abbr = selftest.mole.collect-single-workload|selftest.mole.csw
+trivial = 1
+
+[arg]
+download-dir|dir = ''
+yaml = test
+metrics-cfg = 'metrics.yaml'
+reshape-cfg = 'reshape_rules.yaml'
+
+[arg2env]
+mole.dir = download-dir
+tidb.tiup.yaml = yaml
+mole.metrics-cfg = metrics-cfg
+mole.reshape-cfg = reshape-cfg
+
+[env]
+bench.workload = read
+
+[flow/]
+db.conf.test cluster=test-mole version=v5.3.0 : mole.precheck : db.rm : db.new :
+
+[[bench.workload]].load : [[bench.workload]].run : mole.collect : mole.reshape : env.reset

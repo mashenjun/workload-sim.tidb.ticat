@@ -14,12 +14,10 @@ if [ ! -z "${pd_pwd}" ]; then
 	pd_pwd="-p ${pd_pwd} "
 fi
 
-## Dirs and defining files
-#
 mole_dir="${here}/../repos/mole"
 dir=`must_get_mole_collect_dir "${env}" 'false'`
-
-metrics_yaml=`get_metrics_yaml "${env}" "${here}/../repos/mole/example/metrics.yaml"`
+metrics_config=`must_env_val "${env}" 'mole.metrics-cfg'`
+metrics_yaml=`get_metrics_yaml "${env}" "${here}/../repos/mole/example/${metrics_config}"`
 
 ## Get addresses and begin/end
 #

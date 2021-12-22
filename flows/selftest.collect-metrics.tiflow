@@ -1,34 +1,26 @@
-help = load tpcc data, then run workload-simulating test
+help = load workload data, then run mole to collect metrics
 tags = selftest
-abbr = st.sim
+abbr = st.coll-metrics
 
 
 [arg]
-dir = /tmp/test-sim
+dir = /tmp/test-collect-metrics
 db = test
 yaml = test
-lightning-tmp-dir = /data-b/lightning-tmp-dir
-
 
 [flow/]
 
 ## Clean clusters if last run was not good
-db.rm.yes test-sim-1
-db.rm.yes test-sim-2
+db.rm.yes test-collect-metrics
 
 ## Config
 ## deploy and start as minimal cluster on port 4100, for store bench meta data 
 bench.meta.100 
 
-## br config
-br-t.conf checksum=false dir=[[dir]]/br
-my-rep.conf.test dir=[[dir]]/my-rep/dump store-dir=[[dir]]/my-rep/store 
-mask.config db=[[db]]
-lightning.config tmp-dir=[[lightning-tmp-dir]] checksum=false
-
 mole.precheck
 
 ## Create source cluster
+## set conifg, how the yaml is used?
 db.conf.test yaml=[[yaml]] cluster=test-sim-1
 db.rm+new
 

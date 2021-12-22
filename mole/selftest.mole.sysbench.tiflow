@@ -1,0 +1,13 @@
+help = test mole with SysBench
+
+[arg]
+dir = /tmp/test-mole
+yaml = test
+metrics-cfg = 'metrics.yaml'
+
+[arg2env]
+tidb.tiup.yaml = yaml
+
+[flow/]
+sysbench.conf.min t=4 dur=7200 : selftest.mole.csw dir=[[dir]]/sysbench metrics-cfg=[[metrics-cfg]]
+
